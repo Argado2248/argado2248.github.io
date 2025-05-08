@@ -1,0 +1,22 @@
+// MongoDB Prisma schema for fact-checker
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Article {
+  id        String   @id @default(auto()) @map("_id")
+  title     String
+  summary   String
+  content   String
+  verdict   String
+  sources   String[]
+  status    String   // "pending" | "approved" | "rejected"
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+} 

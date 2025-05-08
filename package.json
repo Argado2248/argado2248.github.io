@@ -1,0 +1,42 @@
+{
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "autoprefixer": "latest",
+    "postcss": "latest",
+    "prisma": "^6.7.0",
+    "tailwindcss": "latest",
+    "typescript": "latest",
+    "ts-node": "latest"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.7.0",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "name": "fact-checker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test:db": "NODE_OPTIONS='--loader ts-node/esm' ts-node-esm src/lib/test-db.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Argado2248/fact-checker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Argado2248/fact-checker/issues"
+  },
+  "homepage": "https://github.com/Argado2248/fact-checker#readme",
+  "description": ""
+}
