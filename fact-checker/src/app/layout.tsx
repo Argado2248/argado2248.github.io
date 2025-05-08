@@ -27,10 +27,6 @@ export default function RootLayout({
       <body className="bg-white min-h-screen text-gray-900">
         <div className="flex flex-col min-h-screen">
           <main className="flex-1 w-full max-w-4xl mx-auto">{children}</main>
-          <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-sm flex justify-center py-2 z-50">
-            {/* TODO: Add navigation icons/links here */}
-            <span className="text-gray-400 text-sm">Navigation</span>
-          </nav>
         </div>
       </body>
     </html>
