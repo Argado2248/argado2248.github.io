@@ -1,22 +1,23 @@
 {
   "devDependencies": {
-    "@types/node": "latest",
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/node": "^20.11.24",
     "@types/node-cron": "^3.0.11",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "prisma": "^6.7.0",
-    "ts-node": "latest",
-    "typescript": "latest"
+    "@types/react": "^18.2.61",
+    "@types/react-dom": "^18.2.19",
+    "prisma": "^5.10.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@prisma/client": "^6.7.0",
+    "@prisma/client": "^5.10.2",
     "autoprefixer": "^10.4.17",
-    "next": "latest",
+    "next": "14.1.0",
     "node-cron": "^3.0.3",
-    "openai": "^4.98.0",
+    "openai": "^4.28.0",
     "postcss": "^8.4.35",
-    "react": "latest",
-    "react-dom": "^19.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rss-parser": "^3.13.0",
     "source-map-js": "^1.2.1",
     "tailwindcss": "^3.4.1"
@@ -24,7 +25,6 @@
   "name": "fact-checker",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

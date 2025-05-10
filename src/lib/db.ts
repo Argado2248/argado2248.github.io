@@ -7,6 +7,8 @@ type ArticleCreateInput = {
   verdict: string
   sources: string[]
   status: string
+  subject: string
+  factCheckScore: number
 }
 
 export async function getArticles() {
@@ -15,7 +17,7 @@ export async function getArticles() {
 
   return prisma.article.findMany({
     where: {
-      status: 'approved',
+      status: 'APPROVED',
       createdAt: {
         gte: oneDayAgo
       }
@@ -36,12 +38,12 @@ export async function createArticle(data: ArticleCreateInput) {
   return prisma.article.create({
     data: {
       ...data,
-      status: 'pending'
+      status: 'PENDING'
     }
   })
 }
 
-export async function updateArticleStatus(id: string, status: 'approved' | 'rejected') {
+export async function updateArticleStatus(id: string, status: 'APPROVED' | 'REJECTED') {
   return prisma.article.update({
     where: { id },
     data: { status }
@@ -51,7 +53,7 @@ export async function updateArticleStatus(id: string, status: 'approved' | 'reje
 export async function getPendingArticles() {
   return prisma.article.findMany({
     where: {
-      status: 'pending'
+      status: 'PENDING'
     },
     orderBy: {
       createdAt: 'desc'

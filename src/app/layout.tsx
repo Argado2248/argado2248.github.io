@@ -1,19 +1,27 @@
-import './globals.css'
-import type { Metadata } from 'next'
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: 'Swedish News Fact Checker',
-  description: 'A platform for reviewing and fact-checking Swedish news articles',
-}
+  title: "Faktakoll - Nyheter & Rykten",
+  description: "Vi granskar och faktakollar nyheter och rykten med hjälp av AI och mänsklig kontroll.",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="sv">
-      <body>{children}</body>
+    <html lang="sv" className={inter.className}>
+      <body className="min-h-screen bg-gray-50">
+        {children}
+      </body>
     </html>
-  )
-} 
+  );
+}

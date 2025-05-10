@@ -17,14 +17,15 @@ datasource db {
 }
 
 model Article {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  title     String
-  summary   String
-  content   String
-  verdict   String
-  subject   String   @default("Senaste nytt") // The subject/category of the article with a default value
-  sources   String[]
-  status    String // "pending" | "approved" | "rejected"
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  title          String
+  summary        String
+  content        String
+  verdict        String
+  subject        String   @default("Senaste nytt") // The subject/category of the article with a default value
+  sources        String[]
+  status         String // "pending" | "approved" | "rejected"
+  factCheckScore Int      @default(0) // Score from 0-100 indicating the fact-check rating
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
