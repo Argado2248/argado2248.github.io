@@ -119,6 +119,7 @@ exports.Prisma.ArticleScalarFieldEnum = {
   summary: 'summary',
   content: 'content',
   verdict: 'verdict',
+  subject: 'subject',
   sources: 'sources',
   status: 'status',
   createdAt: 'createdAt',

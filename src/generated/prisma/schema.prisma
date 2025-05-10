@@ -22,6 +22,7 @@ model Article {
   summary   String
   content   String
   verdict   String
+  subject   String   @default("Senaste nytt") // The subject/category of the article with a default value
   sources   String[]
   status    String // "pending" | "approved" | "rejected"
   createdAt DateTime @default(now())

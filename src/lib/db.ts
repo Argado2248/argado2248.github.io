@@ -1,4 +1,4 @@
-import prisma from './prisma.js'
+import prisma from './prisma'
 
 type ArticleCreateInput = {
   title: string
@@ -10,7 +10,16 @@ type ArticleCreateInput = {
 }
 
 export async function getArticles() {
+  const oneDayAgo = new Date();
+  oneDayAgo.setDate(oneDayAgo.getDate() - 1);
+
   return prisma.article.findMany({
+    where: {
+      status: 'approved',
+      createdAt: {
+        gte: oneDayAgo
+      }
+    },
     orderBy: {
       createdAt: 'desc'
     }

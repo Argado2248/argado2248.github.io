@@ -839,6 +839,7 @@ export namespace Prisma {
     summary: string | null
     content: string | null
     verdict: string | null
+    subject: string | null
     status: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -850,6 +851,7 @@ export namespace Prisma {
     summary: string | null
     content: string | null
     verdict: string | null
+    subject: string | null
     status: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -861,6 +863,7 @@ export namespace Prisma {
     summary: number
     content: number
     verdict: number
+    subject: number
     sources: number
     status: number
     createdAt: number
@@ -875,6 +878,7 @@ export namespace Prisma {
     summary?: true
     content?: true
     verdict?: true
+    subject?: true
     status?: true
     createdAt?: true
     updatedAt?: true
@@ -886,6 +890,7 @@ export namespace Prisma {
     summary?: true
     content?: true
     verdict?: true
+    subject?: true
     status?: true
     createdAt?: true
     updatedAt?: true
@@ -897,6 +902,7 @@ export namespace Prisma {
     summary?: true
     content?: true
     verdict?: true
+    subject?: true
     sources?: true
     status?: true
     createdAt?: true
@@ -982,6 +988,7 @@ export namespace Prisma {
     summary: string
     content: string
     verdict: string
+    subject: string
     sources: string[]
     status: string
     createdAt: Date
@@ -1011,6 +1018,7 @@ export namespace Prisma {
     summary?: boolean
     content?: boolean
     verdict?: boolean
+    subject?: boolean
     sources?: boolean
     status?: boolean
     createdAt?: boolean
@@ -1025,13 +1033,14 @@ export namespace Prisma {
     summary?: boolean
     content?: boolean
     verdict?: boolean
+    subject?: boolean
     sources?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ArticleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "summary" | "content" | "verdict" | "sources" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["article"]>
+  export type ArticleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "summary" | "content" | "verdict" | "subject" | "sources" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["article"]>
 
   export type $ArticlePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Article"
@@ -1042,6 +1051,7 @@ export namespace Prisma {
       summary: string
       content: string
       verdict: string
+      subject: string
       sources: string[]
       status: string
       createdAt: Date
@@ -1443,6 +1453,7 @@ export namespace Prisma {
     readonly summary: FieldRef<"Article", 'String'>
     readonly content: FieldRef<"Article", 'String'>
     readonly verdict: FieldRef<"Article", 'String'>
+    readonly subject: FieldRef<"Article", 'String'>
     readonly sources: FieldRef<"Article", 'String[]'>
     readonly status: FieldRef<"Article", 'String'>
     readonly createdAt: FieldRef<"Article", 'DateTime'>
@@ -1805,6 +1816,7 @@ export namespace Prisma {
     summary: 'summary',
     content: 'content',
     verdict: 'verdict',
+    subject: 'subject',
     sources: 'sources',
     status: 'status',
     createdAt: 'createdAt',
@@ -1889,6 +1901,7 @@ export namespace Prisma {
     summary?: StringFilter<"Article"> | string
     content?: StringFilter<"Article"> | string
     verdict?: StringFilter<"Article"> | string
+    subject?: StringFilter<"Article"> | string
     sources?: StringNullableListFilter<"Article">
     status?: StringFilter<"Article"> | string
     createdAt?: DateTimeFilter<"Article"> | Date | string
@@ -1901,6 +1914,7 @@ export namespace Prisma {
     summary?: SortOrder
     content?: SortOrder
     verdict?: SortOrder
+    subject?: SortOrder
     sources?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
@@ -1916,6 +1930,7 @@ export namespace Prisma {
     summary?: StringFilter<"Article"> | string
     content?: StringFilter<"Article"> | string
     verdict?: StringFilter<"Article"> | string
+    subject?: StringFilter<"Article"> | string
     sources?: StringNullableListFilter<"Article">
     status?: StringFilter<"Article"> | string
     createdAt?: DateTimeFilter<"Article"> | Date | string
@@ -1928,6 +1943,7 @@ export namespace Prisma {
     summary?: SortOrder
     content?: SortOrder
     verdict?: SortOrder
+    subject?: SortOrder
     sources?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
@@ -1946,6 +1962,7 @@ export namespace Prisma {
     summary?: StringWithAggregatesFilter<"Article"> | string
     content?: StringWithAggregatesFilter<"Article"> | string
     verdict?: StringWithAggregatesFilter<"Article"> | string
+    subject?: StringWithAggregatesFilter<"Article"> | string
     sources?: StringNullableListFilter<"Article">
     status?: StringWithAggregatesFilter<"Article"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Article"> | Date | string
@@ -1958,6 +1975,7 @@ export namespace Prisma {
     summary: string
     content: string
     verdict: string
+    subject?: string
     sources?: ArticleCreatesourcesInput | string[]
     status: string
     createdAt?: Date | string
@@ -1970,6 +1988,7 @@ export namespace Prisma {
     summary: string
     content: string
     verdict: string
+    subject?: string
     sources?: ArticleCreatesourcesInput | string[]
     status: string
     createdAt?: Date | string
@@ -1981,6 +2000,7 @@ export namespace Prisma {
     summary?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     verdict?: StringFieldUpdateOperationsInput | string
+    subject?: StringFieldUpdateOperationsInput | string
     sources?: ArticleUpdatesourcesInput | string[]
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -1992,6 +2012,7 @@ export namespace Prisma {
     summary?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     verdict?: StringFieldUpdateOperationsInput | string
+    subject?: StringFieldUpdateOperationsInput | string
     sources?: ArticleUpdatesourcesInput | string[]
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -2004,6 +2025,7 @@ export namespace Prisma {
     summary: string
     content: string
     verdict: string
+    subject?: string
     sources?: ArticleCreatesourcesInput | string[]
     status: string
     createdAt?: Date | string
@@ -2015,6 +2037,7 @@ export namespace Prisma {
     summary?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     verdict?: StringFieldUpdateOperationsInput | string
+    subject?: StringFieldUpdateOperationsInput | string
     sources?: ArticleUpdatesourcesInput | string[]
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -2026,6 +2049,7 @@ export namespace Prisma {
     summary?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     verdict?: StringFieldUpdateOperationsInput | string
+    subject?: StringFieldUpdateOperationsInput | string
     sources?: ArticleUpdatesourcesInput | string[]
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -2072,6 +2096,7 @@ export namespace Prisma {
     summary?: SortOrder
     content?: SortOrder
     verdict?: SortOrder
+    subject?: SortOrder
     sources?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
@@ -2084,6 +2109,7 @@ export namespace Prisma {
     summary?: SortOrder
     content?: SortOrder
     verdict?: SortOrder
+    subject?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -2095,6 +2121,7 @@ export namespace Prisma {
     summary?: SortOrder
     content?: SortOrder
     verdict?: SortOrder
+    subject?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder

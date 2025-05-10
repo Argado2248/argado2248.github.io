@@ -1,6 +1,7 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { getArticleById } from "@/lib/db";
 
 const mockNews = [
   {
@@ -50,28 +51,83 @@ const mockNews = [
   }
 ];
 
-export default function ArticlePage({ params }: { params: { id: string } }) {
-  const article = mockNews.find((n) => n.id === Number(params.id));
+export default async function ArticlePage({ params }: { params: { id: string } }) {
+  const article = await getArticleById(params.id);
   if (!article) return notFound();
 
   return (
-    <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-md p-8 mt-8">
-      <Link href="/" className="inline-block mb-6 text-purple-700 hover:underline font-medium text-sm bg-purple-50 px-4 py-2 rounded-full transition-colors">
-        ← Tillbaka
-      </Link>
-      <div className="flex flex-col sm:flex-row gap-6 mb-6">
-        <div className="flex-shrink-0 w-full sm:w-56 h-40 bg-gray-100 rounded-xl overflow-hidden flex items-center justify-center">
-          <img src={article.image} alt="" className="object-cover w-full h-full" />
+    <div style={{ marginTop: '3rem', marginBottom: '3rem' }}>
+      <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-md p-8">
+        <Link href="/" className="inline-block mb-6 text-purple-700 hover:underline font-medium text-sm bg-purple-50 px-4 py-2 rounded-full transition-colors">
+          ← Tillbaka
+        </Link>
+        <div className="flex flex-col sm:flex-row gap-6 mb-6">
+          <div className="flex-shrink-0 w-full sm:w-56 h-40 bg-gray-100 rounded-xl overflow-hidden flex items-center justify-center">
+            {/* No image for now */}
+          </div>
+          <div className="flex flex-col justify-between flex-1">
+            <h1 className="text-2xl font-bold mb-2">{article.title}</h1>
+            <span className="text-xs text-gray-400 mb-2">{article.createdAt ? new Date(article.createdAt).toISOString().slice(0,10) : ""}</span>
+            <div className="flex items-center gap-2 mb-2">
+              {article.subject && (
+                <span 
+                  className="text-xs rounded-full px-3 py-1 font-medium w-fit"
+                  style={{
+                    backgroundColor: article.subject === 'Politik' ? '#dbeafe' :
+                                   article.subject === 'Ekonomi' ? '#dcfce7' :
+                                   article.subject === 'Gäng' ? '#fee2e2' :
+                                   article.subject === 'Senaste nytt' ? '#f3e8ff' :
+                                   article.subject === 'Miljö' ? '#fef3c7' :
+                                   article.subject === 'Utbildning' ? '#e0f2fe' :
+                                   article.subject === 'Väder' ? '#f0fdf4' :
+                                   article.subject === 'Sport' ? '#fef2f2' :
+                                   article.subject === 'Kultur' ? '#faf5ff' :
+                                   article.subject === 'Hälsa' ? '#fffbeb' : '#f3f4f6',
+                    color: article.subject === 'Politik' ? '#1e40af' :
+                          article.subject === 'Ekonomi' ? '#166534' :
+                          article.subject === 'Gäng' ? '#991b1b' :
+                          article.subject === 'Senaste nytt' ? '#6b21a8' :
+                          article.subject === 'Miljö' ? '#92400e' :
+                          article.subject === 'Utbildning' ? '#0369a1' :
+                          article.subject === 'Väder' ? '#15803d' :
+                          article.subject === 'Sport' ? '#b91c1c' :
+                          article.subject === 'Kultur' ? '#7e22ce' :
+                          article.subject === 'Hälsa' ? '#854d0e' : '#374151'
+                  }}
+                >
+                  {article.subject}
+                </span>
+              )}
+              {article.verdict && article.verdict !== "pending" && (
+                <span className="text-xs rounded-full px-3 py-1 font-medium w-fit"
+                  style={{
+                    backgroundColor: Number(article.verdict) < 30 ? '#fee2e2' : 
+                                   Number(article.verdict) < 60 ? '#fef3c7' : '#d1fae5',
+                    color: Number(article.verdict) < 30 ? '#991b1b' : 
+                          Number(article.verdict) < 60 ? '#92400e' : '#065f46',
+                  }}
+                >
+                  Faktakoll: {article.verdict}
+                </span>
+              )}
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col justify-between flex-1">
-          <h1 className="text-2xl font-bold mb-2">{article.title}</h1>
-          <span className="text-xs text-gray-400 mb-2">{article.date}</span>
-          <span className="text-xs rounded-full bg-purple-50 text-purple-700 px-3 py-1 font-medium mb-2 w-fit">{article.status}</span>
+        <p className="text-gray-700 text-lg leading-relaxed mb-4">{article.summary}</p>
+        <div className="text-gray-800 text-base leading-relaxed whitespace-pre-line mb-4">
+          {article.content}
         </div>
-      </div>
-      <p className="text-gray-700 text-lg leading-relaxed mb-4">{article.summary}</p>
-      <div className="text-gray-800 text-base leading-relaxed whitespace-pre-line">
-        {article.content}
+        {article.sources && article.sources.length > 0 && (
+          <div className="mt-4">
+            <span className="text-xs text-gray-500 mr-2">Källor:</span>
+            {article.sources.map((src: string, i: number) => (
+              <a key={i} href={src} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 underline mr-2">{src}</a>
+            ))}
+          </div>
+        )}
+        <div className="mt-6 text-xs text-gray-500 italic">
+          Denna artikel är AI-genererad och kan innehålla felaktigheter eller spekulationer.
+        </div>
       </div>
     </div>
   );
