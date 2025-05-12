@@ -1,10 +1,6 @@
 {
   "/page": "app/page.js",
-  "/article/[id]/page": "app/article/[id]/page.js",
-  "/hur-vi-arbetar/page": "app/hur-vi-arbetar/page.js",
   "/admin/page": "app/admin/page.js",
-  "/api/articles/route": "app/api/articles/route.js",
-  "/rss-test/page": "app/rss-test/page.js",
-  "/api/articles/[id]/approve/route": "app/api/articles/[id]/approve/route.js",
+  "/article/[id]/page": "app/article/[id]/page.js",
   "/api/articles/approved/route": "app/api/articles/approved/route.js"
 }

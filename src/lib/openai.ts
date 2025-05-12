@@ -29,7 +29,7 @@ export async function generateFactCheck(article: FactCheckInput): Promise<{
   factCheckedContent: string;
 }> {
   const prompt = `
-    Du agerar som en objektiv och oberoende faktagranskare med uppdrag att analysera aktuella nyheter. Följ instruktionerna nedan strikt:
+    Du agerar som en objektiv och oberoende faktagranskare med uppdrag att analysera aktuella nyheter. Din artikel ska ha en läsetid på cirka 1-2 minuter. Följ instruktionerna nedan strikt:
 
     1. Inhämtning av nyhet
     Analysera följande artikel:
@@ -44,26 +44,39 @@ export async function generateFactCheck(article: FactCheckInput): Promise<{
     Undersök nyhetens påståenden genom att:
     - Söka efter andra nyhetskällor som rapporterat om samma händelse
     - Notera hur många oberoende källor som bekräftar informationen
-    - Bedöm källornas trovärdighet
+    - Bedöm källornas trovärdighet och bakgrund
     - Identifiera mönster i rapporteringen
+    - Jämför olika källors rapportering för att identifiera eventuella skillnader
+    - Undersök om det finns relevant historisk kontext eller bakgrundsinformation
 
     3. Tillförlitlighetsbedömning
     Sätt ett betyg mellan 1–100% i faktatillförlitlighet baserat på:
     - Källors mängd och trovärdighet
-    - Grad av samstämmighet
+    - Grad av samstämmighet mellan olika källor
     - Om uppgifterna har bekräftats av officiella eller oberoende aktörer
+    - Om det finns motstridiga uppgifter
+    - Källornas expertis och specialisering inom ämnet
 
     4. Skapa en egen faktagranskad artikel
-    Skriv en helt egenformulerad artikel med tydliga källhänvisningar.
+    Skriv en helt egenformulerad artikel med tydliga källhänvisningar. Artikeln ska innehålla:
+    - En introduktion som sätter händelsen i kontext
+    - En detaljerad genomgång av händelsen eller påståendet
+    - Relevant bakgrundsinformation och historisk kontext
+    - Analys av olika källor och deras rapportering
+    - Tydliga källhänvisningar för viktiga påståenden
+    - En sammanfattande bedömning av nyhetens tillförlitlighet
+    - Eventuella viktiga perspektiv eller aspekter som saknas i originalrapporteringen
 
     Returnera svaret i följande JSON-format:
     {
-      "summary": "Sammanfattning på svenska",
+      "summary": "En kort sammanfattning på svenska (2-3 meningar)",
       "verdict": "En av: 'Sann', 'Delvis sann', 'Osäker', 'Delvis falsk', 'Falsk'",
       "factCheckScore": "Ett nummer mellan 1-100",
       "sources": ["Lista med källor som använts för verifiering"],
-      "factCheckedContent": "Den faktagranskade artikeln på svenska med källhänvisningar"
+      "factCheckedContent": "Den faktagranskade artikeln på svenska med källhänvisningar (målet är en läsetid på 1-2 minuter)"
     }
+
+    OBS: Svara ENDAST med JSON-objektet ovan, utan någon ytterligare text eller formatering.
   `;
 
   try {
